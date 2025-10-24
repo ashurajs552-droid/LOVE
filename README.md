@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Deploy to Vercel (this subfolder)
+
+This app lives in a subfolder of a larger workspace. To deploy just this app:
+
+1. Push your repository to GitHub/GitLab/Bitbucket.
+2. In Vercel, click New Project → Import the repo.
+3. When prompted for Root Directory, select `gradespark-dashboard`.
+4. Framework Preset: Next.js (auto-detected).
+5. Build & Output Settings: leave defaults
+   - Build Command: `next build`
+   - Install Command: `npm install`
+   - Output Directory: `.next`
+6. Environment variables: none required.
+7. Deploy.
+
+Notes:
+- This app uses minimal cookie-based auth (no external services). Cookies are marked `secure` only in production and work locally.
+- Middleware protects `/dashboard`; unauthenticated users are redirected to `/auth/login`.
