@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import Section from "@/components/Section";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const search = useSearchParams();
   const next = search.get("next") || "/dashboard";
@@ -60,5 +60,13 @@ export default function LoginPage() {
         <div className="mt-4 text-xs text-zinc-500">FERPA & COPPA compliant • Secure & Private</div>
       </div>
     </Section>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div />}> 
+      <LoginContent />
+    </Suspense>
   );
 }

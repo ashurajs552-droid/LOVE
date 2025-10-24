@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import Section from "@/components/Section";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function SignUpPage() {
+function SignUpContent() {
   const router = useRouter();
   const search = useSearchParams();
   const next = search.get("next") || "/dashboard";
@@ -58,5 +58,13 @@ export default function SignUpPage() {
         </form>
       </div>
     </Section>
+  );
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={<div />}> 
+      <SignUpContent />
+    </Suspense>
   );
 }
